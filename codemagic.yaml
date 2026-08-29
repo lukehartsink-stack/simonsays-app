@@ -6,7 +6,7 @@ workflows:
     integrations:
       # Name of the App Store Connect API key you add under
       # Codemagic → Teams → Integrations → Developer Portal
-      app_store_connect: codemagic
+      app_store_connect: AutoBook ASC Admin
     environment:
       xcode: latest
       ios_signing:
