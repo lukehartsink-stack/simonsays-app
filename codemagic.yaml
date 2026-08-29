@@ -1,4 +1,25 @@
 workflows:
+  register-bundle-id:
+    name: One-off · Register bundle ID in Apple Developer Portal
+    max_build_duration: 15
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: AutoBook ASC Admin
+    environment:
+      xcode: latest
+    scripts:
+      - name: Register coach.simonsays.app (no-op if it already exists)
+        script: |
+          if app-store-connect bundle-ids list --identifier-strict-match coach.simonsays.app --platform IOS | grep -q "coach.simonsays.app"; then
+            echo "Bundle ID already registered."
+          else
+            app-store-connect bundle-ids create \
+              --identifier coach.simonsays.app \
+              --name "simonsays coach" \
+              --platform IOS
+          fi
+          app-store-connect bundle-ids list --identifier-strict-match coach.simonsays.app --platform IOS
+
   ios-testflight:
     name: iOS → TestFlight
     max_build_duration: 60
