@@ -18,6 +18,25 @@ workflows:
               --platform IOS
           fi
           app-store-connect bundle-ids list --bundle-id-identifier coach.simonsays.app --strict-match-identifier --platform IOS
+      - name: Create App Store provisioning profile (if missing)
+        script: |
+          set -e
+          BUNDLE_RES_ID=$(app-store-connect bundle-ids list --bundle-id-identifier coach.simonsays.app --strict-match-identifier --platform IOS --json \
+            | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d[0]["id"])')
+          echo "Bundle ID resource: $BUNDLE_RES_ID"
+          CERT_IDS=$(app-store-connect certificates list --type DISTRIBUTION --json \
+            | python3 -c 'import json,sys; print(" ".join(c["id"] for c in json.load(sys.stdin)))')
+          echo "Distribution certificates: $CERT_IDS"
+          EXISTING=$(app-store-connect profiles list --bundle-id-resource-ids "$BUNDLE_RES_ID" --type IOS_APP_STORE --json 2>/dev/null \
+            | python3 -c 'import json,sys; print(len(json.load(sys.stdin)))' || echo 0)
+          if [ "$EXISTING" != "0" ]; then
+            echo "App Store profile already exists ($EXISTING)."
+          else
+            app-store-connect profiles create "$BUNDLE_RES_ID" \
+              --certificate-ids $CERT_IDS \
+              --type IOS_APP_STORE \
+              --name "simonsays coach App Store"
+          fi
 
   ios-testflight:
     name: iOS → TestFlight
