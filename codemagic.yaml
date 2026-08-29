@@ -10,15 +10,14 @@ workflows:
     scripts:
       - name: Register coach.simonsays.app (no-op if it already exists)
         script: |
-          if app-store-connect bundle-ids list --identifier-strict-match coach.simonsays.app --platform IOS | grep -q "coach.simonsays.app"; then
+          if app-store-connect bundle-ids list --bundle-id-identifier coach.simonsays.app --strict-match-identifier --platform IOS | grep -q "coach.simonsays.app"; then
             echo "Bundle ID already registered."
           else
-            app-store-connect bundle-ids create \
-              --identifier coach.simonsays.app \
+            app-store-connect bundle-ids create coach.simonsays.app \
               --name "simonsays coach" \
               --platform IOS
           fi
-          app-store-connect bundle-ids list --identifier-strict-match coach.simonsays.app --platform IOS
+          app-store-connect bundle-ids list --bundle-id-identifier coach.simonsays.app --strict-match-identifier --platform IOS
 
   ios-testflight:
     name: iOS → TestFlight
