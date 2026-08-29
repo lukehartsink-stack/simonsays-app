@@ -1,14 +1,14 @@
 import SwiftUI
 
 struct StudySetView: View {
-    private let set = DataStore.shared.studySet
+    private let studySet = DataStore.shared.studySet
     @State private var selectedParts: Set<Int> = []
     @State private var count = 20
     @State private var shuffle = true
     @State private var session: QuizSession? = nil
 
     private var pool: [StudyQuestion] {
-        set.questions.filter { selectedParts.isEmpty || selectedParts.contains($0.part) }
+        studySet.questions.filter { selectedParts.isEmpty || selectedParts.contains($0.part) }
     }
 
     var body: some View {
@@ -27,20 +27,20 @@ struct StudySetView: View {
         Form {
             Section {
                 VStack(alignment: .leading, spacing: 6) {
-                    Eyebrow(set.subtitle)
-                    Text("\(set.questions.count) multiple-choice questions on Parts 1–3. Each answer is marked straight away and points you to the handout to revisit.")
+                    Eyebrow(studySet.subtitle)
+                    Text("\(studySet.questions.count) multiple-choice questions on Parts 1–3. Each answer is marked straight away and points you to the handout to revisit.")
                         .font(.subheadline).foregroundStyle(.secondary)
                 }
             }
             Section("Parts") {
-                ForEach(set.parts) { part in
-                    let n = set.questions.filter { $0.part == part.number }.count
+                ForEach(studySet.parts) { part in
+                    let n = studySet.questions.filter { $0.part == part.number }.count
                     Toggle(isOn: Binding(
                         get: { selectedParts.isEmpty || selectedParts.contains(part.number) },
                         set: { on in
-                            if selectedParts.isEmpty { selectedParts = Set(set.parts.map(\.number)) }
+                            if selectedParts.isEmpty { selectedParts = Set(studySet.parts.map(\.number)) }
                             if on { selectedParts.insert(part.number) } else { selectedParts.remove(part.number) }
-                            if selectedParts.count == set.parts.count { selectedParts = [] }
+                            if selectedParts.count == studySet.parts.count { selectedParts = [] }
                         }
                     )) {
                         VStack(alignment: .leading) {
