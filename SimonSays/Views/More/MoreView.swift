@@ -4,37 +4,27 @@ struct MoreView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section("Free previews") {
-                    NavCard(badge: "Workshop reference", title: "2.9 Lifting Edges — Decision Tree",
-                            text: "Two pages, in-the-bay diagnostic. Six questions route to the four root causes of edge lift.",
-                            systemImage: "arrow.triangle.branch") { LiftingEdgesView() }
-                    NavCard(badge: "Calculator", title: "PPF Quote Calculator User Guide",
-                            text: "The full user guide for the calculator product, running a real quote from intake to delivered PDF.",
-                            systemImage: "doc.text.fill") { QuoteGuideView() }
+                Section {
+                    LibraryRow(title: "About Simon", subtitle: "Founder and trainer · the independence note", icon: "person.crop.circle.fill", color: Theme.accent) { AboutView() }
+                    LibraryRow(title: "The Handbook", subtitle: "Editions and how to get it", icon: "book.closed.fill", color: Theme.accentDeep) { HandbookContentView() }
+                    LibraryRow(title: "PPF Quote Calculator", subtitle: "Excel quoting tool · Profilm edition", icon: "tablecells.fill", color: SearchKind.tool.color) { QuoteCalculatorView() }
                 }
-                Section("Kit") {
-                    NavCard(badge: "Tools, chemicals, training", title: "PPF Shopping List",
-                            text: "A working list of the kit Simon uses for paint protection film installation.",
-                            systemImage: "cart.fill") { ShoppingListView() }
-                }
-                Section("About") {
-                    NavCard(title: "About Simon", text: "Founder and trainer. Track record, the independence note, languages, contact.",
-                            systemImage: "person.crop.circle.fill") { AboutView() }
-                    Link(destination: Theme.siteURL) {
-                        Label("simonsays.coach", systemImage: "safari")
+                Section("Contact") {
+                    Link(destination: URL(string: "mailto:\(Theme.contactEmail)")!) {
+                        Label(Theme.contactEmail, systemImage: "envelope.fill")
                     }
                     Link(destination: URL(string: "https://www.instagram.com/simoncrookes_ppf/")!) {
-                        Label("Instagram @simoncrookes_ppf", systemImage: "camera")
+                        Label("Instagram @simoncrookes_ppf", systemImage: "camera.fill")
                     }
-                    Link(destination: URL(string: "mailto:\(Theme.contactEmail)")!) {
-                        Label(Theme.contactEmail, systemImage: "envelope")
+                    Link(destination: Theme.siteURL) {
+                        Label("simonsays.coach", systemImage: "safari.fill")
                     }
                 }
                 Section {
                     Link("Legal notice", destination: URL(string: "https://simonsays.coach/legal/")!)
                     Link("Privacy", destination: URL(string: "https://simonsays.coach/privacy/")!)
                 } footer: {
-                    Text("Independent training and support for PPF installers and car detailers. Content and media partnership with Charlie Detailing.")
+                    Text("Independent training and support for PPF installers and car detailers. Content and media partnership with Charlie Detailing.\n\nVersion \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0") (\(Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"))")
                 }
             }
             .navigationTitle("More")

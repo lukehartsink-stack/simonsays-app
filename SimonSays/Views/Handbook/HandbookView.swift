@@ -8,7 +8,7 @@ struct HandbookPart: Identifiable {
     var id: Int { number }
 }
 
-struct HandbookView: View {
+struct HandbookContentView: View {
     private let parts: [HandbookPart] = [
         .init(number: 1, title: "Foundations",
               inside: "The chemistry and material knowledge to have before touching a panel: PPF materials, adhesives, matt vs gloss, the physics of adhesion.", fullOnly: false),
@@ -25,8 +25,7 @@ struct HandbookView: View {
     ]
 
     var body: some View {
-        NavigationStack {
-            ScrollView {
+        ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 6) {
                         Eyebrow("The handbook")
@@ -79,9 +78,9 @@ struct HandbookView: View {
                 }
                 .padding()
             }
-            .background(Color(.systemGroupedBackground))
-            .navigationTitle("Handbook")
-        }
+        .background(Color(.systemGroupedBackground))
+        .navigationTitle("Handbook")
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     private func partRow(_ p: HandbookPart) -> some View {
@@ -133,5 +132,5 @@ struct HandbookView: View {
 }
 
 #Preview {
-    HandbookView()
+    NavigationStack { HandbookContentView() }
 }
