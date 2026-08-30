@@ -55,7 +55,7 @@ workflows:
         XCODE_PROJECT: "SimonSays.xcodeproj"
         XCODE_SCHEME: "SimonSays"
         # Numeric Apple ID of the app in App Store Connect (App Information → Apple ID)
-        APP_STORE_APPLE_ID: 0000000000
+        APP_STORE_APPLE_ID: 6806799514
     triggering:
       events:
         - push
