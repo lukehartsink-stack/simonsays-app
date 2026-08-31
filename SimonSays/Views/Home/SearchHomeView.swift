@@ -5,6 +5,7 @@ struct SearchHomeView: View {
     @State private var query = ""
     @State private var scope: SearchScope = .all
     @AppStorage("recentSearches") private var recentData = Data()
+    @ObservedObject private var appState = AppState.shared
 
     private let index = SearchIndex.shared
     private let store = DataStore.shared
@@ -49,6 +50,18 @@ struct SearchHomeView: View {
                     SearchDestinationView(destination: entry.destination)
                 }
             }
+            .onChange(of: appState.pendingSearch) { _, newValue in
+                if let newValue {
+                    query = newValue
+                    appState.pendingSearch = nil
+                }
+            }
+            .onAppear {
+                if let pending = appState.pendingSearch {
+                    query = pending
+                    appState.pendingSearch = nil
+                }
+            }
         }
     }
 
@@ -68,7 +81,7 @@ struct SearchHomeView: View {
                     ActionTile(title: "Lifting edge?", subtitle: "Diagnose in six questions", icon: "arrow.triangle.branch", color: SearchKind.guide.color) { LiftingEdgesView() }
                     ActionTile(title: "How much film?", subtitle: "Coverage calculator", icon: "ruler.fill", color: SearchKind.tool.color) { CoverageCalculatorView() }
                     ActionTile(title: "What to charge", subtitle: "Hourly rate calculator", icon: "clock.fill", color: Theme.accentDeep) { HourlyRateCalculatorView() }
-                    ActionTile(title: "Test yourself", subtitle: "\(store.studySet.questions.count)-question study set", icon: "checkmark.circle.fill", color: Color(hex: 0x0F6E56)) { StudySetView() }
+                    ActionTile(title: "Test yourself", subtitle: "\(store.studySet.questions.count)-question study set", icon: "checkmark.circle.fill", color: Theme.green) { StudySetView() }
                 }
 
                 if !recents.isEmpty {

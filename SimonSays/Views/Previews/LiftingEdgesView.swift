@@ -91,7 +91,7 @@ struct LiftingEdgesView: View {
                     Eyebrow("Diagnosis")
                     Text(title).font(.title3.weight(.bold))
                     Text(text)
-                    Callout(train, title: "Train", color: Color(hex: 0x0F6E56))
+                    Callout(train, title: "Train", color: Theme.green)
                 }
                 .padding(14)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -160,10 +160,10 @@ struct LiftingEdgesView: View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Before you start: the four causes").font(.headline)
             LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
-                cause("Stretch", "Film stretched past its memory limit, pulling itself back.", Color(hex: 0xBA7517))
-                cause("Surface prep", "Contamination preventing molecular (Van der Waals) contact.", Color(hex: 0x993C1D))
-                cause("Activation", "No post-heat, so the adhesive never fully bonded on stretched or tight zones.", Color(hex: 0xA32D2D))
-                cause("Slip & technique", "Wrong solution mix, trapped slip, or insufficient squeegee pressure.", Color(hex: 0x185FA5))
+                cause("Stretch", "Film stretched past its memory limit, pulling itself back.", Theme.amber)
+                cause("Surface prep", "Contamination preventing molecular (Van der Waals) contact.", Theme.rust)
+                cause("Activation", "No post-heat, so the adhesive never fully bonded on stretched or tight zones.", Theme.red)
+                cause("Slip & technique", "Wrong solution mix, trapped slip, or insufficient squeegee pressure.", Theme.blue)
             }
         }
     }

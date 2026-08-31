@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Everything to read or browse, in one place.
+/// Everything to read, browse, or calculate, in one place.
 struct LibraryView: View {
     private let store = DataStore.shared
 
@@ -14,7 +14,13 @@ struct LibraryView: View {
                 }
                 Section("Handbook") {
                     LibraryRow(title: "The Handbook", subtitle: "43 handouts in six parts · two editions", icon: "book.closed.fill", color: Theme.accent) { HandbookContentView() }
-                    LibraryRow(title: "Study Set", subtitle: "\(store.studySet.questions.count) questions on Parts 1–3", icon: "checkmark.circle.fill", color: Color(hex: 0x0F6E56)) { StudySetView() }
+                    LibraryRow(title: "Study Set", subtitle: "\(store.studySet.questions.count) questions on Parts 1–3", icon: "checkmark.circle.fill", color: Theme.green) { StudySetView() }
+                }
+                Section("Calculators & tools") {
+                    LibraryRow(title: "PPF Coverage Calculator", subtitle: "How much film a job actually consumes", icon: "ruler.fill", color: SearchKind.tool.color) { CoverageCalculatorView() }
+                    LibraryRow(title: "Hourly Rate Calculator", subtitle: "A defensible rate from your real cost base", icon: "clock.fill", color: Theme.accentDeep) { HourlyRateCalculatorView() }
+                    LibraryRow(title: "PPF Quote Calculator", subtitle: "Excel quoting tool · Profilm edition", icon: "tablecells.fill", color: SearchKind.tool.color) { QuoteCalculatorView() }
+                    LibraryRow(title: "Fun & Games", subtitle: "9 drills, demos, quizzes and games", icon: "gamecontroller.fill", color: Theme.purple) { FunAndGamesView() }
                 }
                 Section("Free previews") {
                     LibraryRow(title: "2.9 Lifting Edges — Decision Tree", subtitle: "Six questions, four root causes", icon: "arrow.triangle.branch", color: SearchKind.guide.color) { LiftingEdgesView() }

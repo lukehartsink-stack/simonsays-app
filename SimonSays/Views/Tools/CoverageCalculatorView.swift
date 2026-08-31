@@ -130,7 +130,7 @@ struct CoverageCalculatorView: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Nesting saving").font(.caption).foregroundStyle(.secondary)
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
-                        Text("\(cu)\(Format.fixed(r.savingCost))").font(.title2.weight(.bold)).foregroundStyle(Color(hex: 0x0F6E56))
+                        Text("\(cu)\(Format.fixed(r.savingCost))").font(.title2.weight(.bold)).foregroundStyle(Theme.green)
                         Text("(\(Format.fixed(r.savingFilm)) m · \(Format.fixed(r.savingPct, 1))%)").font(.subheadline).foregroundStyle(.secondary)
                     }
                 }
@@ -188,9 +188,9 @@ struct CoverageCalculatorView: View {
                     }
                     .font(.caption).foregroundStyle(.secondary)
                     HStack(spacing: 6) {
-                        if row.rotated { Pill(text: "Rotated ↺", color: Color(hex: 0xBA7517)) }
+                        if row.rotated { Pill(text: "Rotated ↺", color: Theme.amber) }
                         if let host = row.nestedAlongside {
-                            Pill(text: "nested alongside \(host)", color: Color(hex: 0x0F6E56))
+                            Pill(text: "nested alongside \(host)", color: Theme.green)
                         } else {
                             Text("opens zone").font(.caption2).foregroundStyle(.secondary)
                         }

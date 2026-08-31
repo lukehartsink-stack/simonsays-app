@@ -3,6 +3,7 @@ import SwiftUI
 /// A single FAQ answer as its own screen (used from search results).
 struct FAQDetailView: View {
     let item: FAQItem
+    @ObservedObject private var store = ProfileStore.shared
     private let data = DataStore.shared.faq
 
     private var categoryName: String {
@@ -17,7 +18,7 @@ struct FAQDetailView: View {
             VStack(alignment: .leading, spacing: 18) {
                 HStack(spacing: 6) {
                     Pill(text: categoryName)
-                    Pill(text: audienceName, color: item.audience == "customer" ? Color(hex: 0x0F6E56) : Color(hex: 0x533FAB))
+                    Pill(text: audienceName, color: item.audience == "customer" ? Theme.green : Theme.purple)
                 }
                 Text(item.q).font(.title2.weight(.bold)).fixedSize(horizontal: false, vertical: true)
                 Text(item.a).font(.body).fixedSize(horizontal: false, vertical: true)
@@ -68,6 +69,13 @@ struct FAQDetailView: View {
         .navigationTitle("FAQ")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    store.toggleBookmark(item.id)
+                } label: {
+                    Image(systemName: store.isBookmarked(item.id) ? "bookmark.fill" : "bookmark")
+                }
+            }
             ToolbarItem(placement: .topBarTrailing) {
                 ShareLink(item: "Q: \(item.q)\n\nA: \(item.a)\n\n— simonsays.coach PPF Installation FAQ") {
                     Image(systemName: "square.and.arrow.up")

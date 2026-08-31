@@ -28,11 +28,11 @@ enum SearchKind: String, CaseIterable, Identifiable {
 
     var color: Color {
         switch self {
-        case .faq: return Color(hex: 0x533FAB)
-        case .product: return Color(hex: 0x0F6E56)
-        case .tool: return Color(hex: 0xBA7517)
+        case .faq: return Theme.purple
+        case .product: return Theme.green
+        case .tool: return Theme.amber
         case .handbook: return Theme.accent
-        case .guide: return Color(hex: 0x993C1D)
+        case .guide: return Theme.rust
         }
     }
 }

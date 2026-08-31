@@ -1,19 +1,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject private var appState = AppState.shared
+
     var body: some View {
-        TabView {
+        TabView(selection: $appState.selectedTab) {
             SearchHomeView()
                 .tabItem { Label("Search", systemImage: "magnifyingglass") }
+                .tag(0)
+
+            NavigationStack { HandbookContentView() }
+                .tabItem { Label("Handbook", systemImage: "book.closed.fill") }
+                .tag(1)
+
+            TestsView()
+                .tabItem { Label("Tests", systemImage: "checkmark.circle.fill") }
+                .tag(2)
 
             LibraryView()
                 .tabItem { Label("Library", systemImage: "books.vertical.fill") }
+                .tag(3)
 
-            ToolsView()
-                .tabItem { Label("Tools", systemImage: "wrench.and.screwdriver.fill") }
-
-            MoreView()
-                .tabItem { Label("More", systemImage: "ellipsis.circle.fill") }
+            ProfileView()
+                .tabItem { Label("Profile", systemImage: "person.crop.circle.fill") }
+                .tag(4)
         }
     }
 }

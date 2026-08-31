@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FAQView: View {
     private let data = DataStore.shared.faq
+    @ObservedObject private var store = ProfileStore.shared
     @State private var query = ""
     @State private var audience = "all"
     @State private var category = "all"
@@ -108,7 +109,7 @@ struct FAQView: View {
                         HStack(spacing: 6) {
                             Pill(text: categoryNames[f.category] ?? f.category)
                             Pill(text: audienceNames[f.audience] ?? f.audience,
-                                 color: f.audience == "customer" ? Color(hex: 0x0F6E56) : Color(hex: 0x533FAB))
+                                 color: f.audience == "customer" ? Theme.green : Theme.purple)
                         }
                     }
                     Spacer(minLength: 0)
@@ -118,6 +119,14 @@ struct FAQView: View {
 
             if isOpen {
                 Text(f.a).font(.body)
+                Button {
+                    store.toggleBookmark(f.id)
+                } label: {
+                    Label(store.isBookmarked(f.id) ? "Saved" : "Save answer",
+                          systemImage: store.isBookmarked(f.id) ? "bookmark.fill" : "bookmark")
+                        .font(.caption.weight(.semibold))
+                }
+                .buttonStyle(.borderless)
                 if let refs = f.handoutRefs, !refs.isEmpty {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("IN THE HANDBOOK").font(.caption2.weight(.semibold)).foregroundStyle(.secondary)

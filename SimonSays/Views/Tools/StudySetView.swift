@@ -77,6 +77,7 @@ final class QuizSession {
     var index = 0
     var chosen: [String: Int] = [:]
     var finished = false
+    var recorded = false
 
     init(questions: [StudyQuestion]) { self.questions = questions }
 
@@ -117,7 +118,7 @@ struct QuizView: View {
 
     var body: some View {
         if session.finished {
-            results
+            results.onAppear { ProfileStore.shared.record(session: session) }
         } else {
             question
         }
@@ -147,9 +148,9 @@ struct QuizView: View {
                                 Spacer()
                                 if let picked {
                                     if i == q.answer {
-                                        Image(systemName: "checkmark.circle.fill").foregroundStyle(Color(hex: 0x0F6E56))
+                                        Image(systemName: "checkmark.circle.fill").foregroundStyle(Theme.green)
                                     } else if i == picked {
-                                        Image(systemName: "xmark.circle.fill").foregroundStyle(Color(hex: 0xA32D2D))
+                                        Image(systemName: "xmark.circle.fill").foregroundStyle(Theme.red)
                                     }
                                 }
                             }
@@ -166,7 +167,7 @@ struct QuizView: View {
                 if let picked {
                     Callout(q.why,
                             title: picked == q.answer ? "Correct" : "Not quite — the answer is \(q.answer < optionLetters.count ? optionLetters[q.answer] : "\(q.answer + 1)")",
-                            color: picked == q.answer ? Color(hex: 0x0F6E56) : Color(hex: 0xA32D2D))
+                            color: picked == q.answer ? Theme.green : Theme.red)
                     Button {
                         withAnimation { session.next() }
                     } label: {
@@ -184,8 +185,8 @@ struct QuizView: View {
 
     private func background(for i: Int, picked: Int?, answer: Int) -> Color {
         guard let picked else { return Color(.secondarySystemGroupedBackground) }
-        if i == answer { return Color(hex: 0x0F6E56).opacity(0.12) }
-        if i == picked { return Color(hex: 0xA32D2D).opacity(0.12) }
+        if i == answer { return Theme.green.opacity(0.12) }
+        if i == picked { return Theme.red.opacity(0.12) }
         return Color(.secondarySystemGroupedBackground)
     }
 
@@ -200,7 +201,7 @@ struct QuizView: View {
 
                 let missed = session.missedByHandout
                 if missed.isEmpty {
-                    Callout("Full marks. Nothing to revisit from this set.", title: "Well done", color: Color(hex: 0x0F6E56))
+                    Callout("Full marks. Nothing to revisit from this set.", title: "Well done", color: Theme.green)
                 } else {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Handouts to revisit").font(.headline)
@@ -230,7 +231,7 @@ struct QuizView: View {
                         } label: {
                             HStack(alignment: .top, spacing: 8) {
                                 Image(systemName: ok ? "checkmark.circle.fill" : "xmark.circle.fill")
-                                    .foregroundStyle(ok ? Color(hex: 0x0F6E56) : Color(hex: 0xA32D2D))
+                                    .foregroundStyle(ok ? Theme.green : Theme.red)
                                 Text(q.q).font(.subheadline)
                             }
                         }
