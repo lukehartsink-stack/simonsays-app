@@ -7,7 +7,7 @@ struct GameTool: Identifiable {
     let path: String
     let icon: String
     var id: String { path }
-    var url: URL { URL(string: "https://simonsays.coach/training-tools/fun-and-games/\(path)/")! }
+    var url: URL { URL(string: Theme.toolsBase + path + "/")! }
 }
 
 /// The nine browser-based drills, demos and games. They're interactive HTML tools on simonsays.coach,

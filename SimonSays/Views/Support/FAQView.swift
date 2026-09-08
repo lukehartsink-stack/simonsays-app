@@ -109,7 +109,7 @@ struct FAQView: View {
                         HStack(spacing: 6) {
                             Pill(text: categoryNames[f.category] ?? f.category)
                             Pill(text: audienceNames[f.audience] ?? f.audience,
-                                 color: f.audience == "customer" ? Theme.green : Theme.purple)
+                                 color: f.audience == "customer" ? Theme.iconSlate : Theme.iconBlue)
                         }
                     }
                     Spacer(minLength: 0)

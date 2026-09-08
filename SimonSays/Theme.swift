@@ -32,7 +32,19 @@ enum Theme {
     ]
 
     static let contactEmail = "training@simonsays.coach"
+    static let instagramURL = URL(string: "https://www.instagram.com/simoncrookes_ppf/")!
     static let siteURL = URL(string: "https://simonsays.coach/")!
+
+    /// Where the browser-based training tools are loaded from. Once Simon publishes the
+    /// header-less copies (e.g. `https://simonsays.coach/app/training-tools/fun-and-games/`)
+    /// change this one line; the web view hides the site chrome either way.
+    static let toolsBase = "https://simonsays.coach/training-tools/fun-and-games/"
+
+    // Icon palette — monochrome on purpose: Simon Says blue plus greys, no rainbow.
+    static let iconBlue  = accent
+    static let iconDeep  = accentDeep
+    static let iconGrey  = muted
+    static let iconSlate = Color(light: 0x4A5666, dark: 0x7D8896)
 }
 
 extension Color {

@@ -18,7 +18,7 @@ struct FAQDetailView: View {
             VStack(alignment: .leading, spacing: 18) {
                 HStack(spacing: 6) {
                     Pill(text: categoryName)
-                    Pill(text: audienceName, color: item.audience == "customer" ? Theme.green : Theme.purple)
+                    Pill(text: audienceName, color: item.audience == "customer" ? Theme.iconSlate : Theme.iconBlue)
                 }
                 Text(item.q).font(.title2.weight(.bold)).fixedSize(horizontal: false, vertical: true)
                 Text(item.a).font(.body).fixedSize(horizontal: false, vertical: true)

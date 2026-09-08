@@ -95,7 +95,7 @@ struct HandbookContentView: View {
                     Text(p.title).font(.headline)
                     Spacer()
                     Pill(text: p.fullOnly ? "Full only" : "Installer + Full",
-                         color: p.fullOnly ? Theme.amber : Theme.green)
+                         color: p.fullOnly ? Theme.iconSlate : Theme.iconBlue)
                 }
                 Text(p.inside).font(.subheadline).foregroundStyle(.secondary)
             }

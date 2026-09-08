@@ -21,7 +21,7 @@ struct TestsView: View {
                                 Image(systemName: "arrow.counterclockwise.circle.fill")
                                     .font(.title2).foregroundStyle(.white)
                                     .frame(width: 36, height: 36)
-                                    .background(Theme.amber, in: RoundedRectangle(cornerRadius: 10))
+                                    .background(Theme.iconDeep, in: RoundedRectangle(cornerRadius: 10))
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text("Review missed questions").font(.headline)
                                     Text("\(store.missedQuestions.count) to clear — answer them right and they drop off the list")
@@ -40,7 +40,7 @@ struct TestsView: View {
                     NavCard(badge: "Online quiz", title: "PPF Knowledge Quiz",
                             text: "Twenty randomised questions across Materials, Application, Defects and Business.",
                             systemImage: "graduationcap.fill") {
-                        WebPage(title: "PPF Knowledge Quiz", url: URL(string: "https://simonsays.coach/training-tools/fun-and-games/ppf-knowledge-quiz/")!)
+                        WebPage(title: "PPF Knowledge Quiz", url: URL(string: Theme.toolsBase + "ppf-knowledge-quiz/")!)
                     }
                     NavCard(badge: "9 tools", title: "Fun & Games",
                             text: "Drills, demos, quizzes, and games — from the self-heal demo to the panel-sequence puzzle.",

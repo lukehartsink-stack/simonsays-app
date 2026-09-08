@@ -34,8 +34,8 @@ struct ProfileView: View {
                 }
 
                 Section {
-                    LibraryRow(title: "About Simon", subtitle: "Founder and trainer · the independence note", icon: "person.crop.circle.fill", color: Theme.accent) { AboutView() }
-                    LibraryRow(title: "The Handbook", subtitle: "Editions and how to get it", icon: "book.closed.fill", color: Theme.accentDeep) { HandbookContentView() }
+                    LibraryRow(title: "About the author", subtitle: "Simon Crookes · trainer, Instagram, email", icon: "person.crop.circle.fill", color: Theme.iconBlue) { AboutView() }
+                    LibraryRow(title: "The Handbook", subtitle: "Editions and how to get it", icon: "book.closed.fill", color: Theme.iconDeep) { HandbookContentView() }
                     LibraryRow(title: "PPF Quote Calculator", subtitle: "Excel quoting tool · Profilm edition", icon: "tablecells.fill", color: SearchKind.tool.color) { QuoteCalculatorView() }
                 }
 
@@ -43,7 +43,7 @@ struct ProfileView: View {
                     Link(destination: URL(string: "mailto:\(Theme.contactEmail)")!) {
                         Label(Theme.contactEmail, systemImage: "envelope.fill")
                     }
-                    Link(destination: URL(string: "https://www.instagram.com/simoncrookes_ppf/")!) {
+                    Link(destination: Theme.instagramURL) {
                         Label("Instagram @simoncrookes_ppf", systemImage: "camera.fill")
                     }
                     Link(destination: Theme.siteURL) {

@@ -40,6 +40,7 @@ struct SearchHomeView: View {
                 }
             }
             .navigationTitle("simonsays.coach")
+            .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search FAQ, products, tools, handbook…")
             .searchScopes($scope, activation: .onSearchPresentation) {
                 ForEach(SearchScope.allCases) { s in Text(s.label).tag(s) }
@@ -70,18 +71,21 @@ struct SearchHomeView: View {
     private var landing: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
+                BrandHero()
+
                 VStack(alignment: .leading, spacing: 4) {
+                    Eyebrow("Start here")
                     Text("What do you need?").font(.title2.weight(.bold))
                     Text("Answers when you're stuck. Training when you're ready.").font(.subheadline).foregroundStyle(.secondary)
                 }
 
                 LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
-                    ActionTile(title: "Fix a problem", subtitle: "\(store.faq.faqs.count) FAQ answers", icon: "questionmark.bubble.fill", color: SearchKind.faq.color) { FAQView() }
-                    ActionTile(title: "Find a product", subtitle: "\(store.allProducts.count) products, 7 ranges", icon: "shippingbox.fill", color: SearchKind.product.color) { ProductFinderView() }
-                    ActionTile(title: "Lifting edge?", subtitle: "Diagnose in six questions", icon: "arrow.triangle.branch", color: SearchKind.guide.color) { LiftingEdgesView() }
-                    ActionTile(title: "How much film?", subtitle: "Coverage calculator", icon: "ruler.fill", color: SearchKind.tool.color) { CoverageCalculatorView() }
-                    ActionTile(title: "What to charge", subtitle: "Hourly rate calculator", icon: "clock.fill", color: Theme.accentDeep) { HourlyRateCalculatorView() }
-                    ActionTile(title: "Test yourself", subtitle: "\(store.studySet.questions.count)-question study set", icon: "checkmark.circle.fill", color: Theme.green) { StudySetView() }
+                    ActionTile(title: "Fix a problem", subtitle: "\(store.faq.faqs.count) FAQ answers", icon: "questionmark.bubble.fill", color: Theme.iconBlue) { FAQView() }
+                    ActionTile(title: "Find a product", subtitle: "\(store.allProducts.count) products, 7 ranges", icon: "shippingbox.fill", color: Theme.iconSlate) { ProductFinderView() }
+                    ActionTile(title: "Lifting edge?", subtitle: "Diagnose in six questions", icon: "arrow.triangle.branch", color: Theme.iconDeep) { LiftingEdgesView() }
+                    ActionTile(title: "How much film?", subtitle: "Coverage calculator", icon: "ruler.fill", color: Theme.iconBlue) { CoverageCalculatorView() }
+                    ActionTile(title: "What to charge", subtitle: "Hourly rate calculator", icon: "clock.fill", color: Theme.iconGrey) { HourlyRateCalculatorView() }
+                    ActionTile(title: "Test yourself", subtitle: "\(store.studySet.questions.count)-question study set", icon: "checkmark.circle.fill", color: Theme.iconDeep) { StudySetView() }
                 }
 
                 if !recents.isEmpty {
@@ -203,6 +207,38 @@ struct SearchDestinationView: View {
         case .shoppingList: ShoppingListView()
         case .faqList: FAQView()
         }
+    }
+}
+
+/// Blue brand banner at the top of the home screen, echoing the site header.
+struct BrandHero: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 10) {
+                Image(systemName: "car.side.fill")
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(Theme.accentDeep)
+                    .frame(width: 36, height: 36)
+                    .background(.white, in: RoundedRectangle(cornerRadius: 10))
+                VStack(alignment: .leading, spacing: 1) {
+                    Text("simonsays.coach").font(.headline).foregroundStyle(.white)
+                    Text("PPF TRAINING · SUPPORT · TOOLS")
+                        .font(.caption2.weight(.semibold)).tracking(0.8)
+                        .foregroundStyle(.white.opacity(0.75))
+                }
+            }
+            Text("Independent training and support for PPF installers and detailers.")
+                .font(.subheadline)
+                .foregroundStyle(.white.opacity(0.9))
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(16)
+        .background(
+            LinearGradient(colors: [Theme.accentDeep, Theme.accent],
+                           startPoint: .topLeading, endPoint: .bottomTrailing),
+            in: RoundedRectangle(cornerRadius: 16)
+        )
     }
 }
 

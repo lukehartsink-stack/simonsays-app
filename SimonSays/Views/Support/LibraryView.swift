@@ -13,21 +13,21 @@ struct LibraryView: View {
                     LibraryRow(title: "PPF Guide for Car Owners", subtitle: "Cost, timing, choosing an installer", icon: "car.fill", color: SearchKind.guide.color) { CarOwnerGuideView() }
                 }
                 Section("Handbook") {
-                    LibraryRow(title: "The Handbook", subtitle: "43 handouts in six parts · two editions", icon: "book.closed.fill", color: Theme.accent) { HandbookContentView() }
-                    LibraryRow(title: "Study Set", subtitle: "\(store.studySet.questions.count) questions on Parts 1–3", icon: "checkmark.circle.fill", color: Theme.green) { StudySetView() }
+                    LibraryRow(title: "The Handbook", subtitle: "43 handouts in six parts · two editions", icon: "book.closed.fill", color: Theme.iconBlue) { HandbookContentView() }
+                    LibraryRow(title: "Study Set", subtitle: "\(store.studySet.questions.count) questions on Parts 1–3", icon: "checkmark.circle.fill", color: Theme.iconDeep) { StudySetView() }
                 }
                 Section("Calculators & tools") {
                     LibraryRow(title: "PPF Coverage Calculator", subtitle: "How much film a job actually consumes", icon: "ruler.fill", color: SearchKind.tool.color) { CoverageCalculatorView() }
-                    LibraryRow(title: "Hourly Rate Calculator", subtitle: "A defensible rate from your real cost base", icon: "clock.fill", color: Theme.accentDeep) { HourlyRateCalculatorView() }
+                    LibraryRow(title: "Hourly Rate Calculator", subtitle: "A defensible rate from your real cost base", icon: "clock.fill", color: Theme.iconGrey) { HourlyRateCalculatorView() }
                     LibraryRow(title: "PPF Quote Calculator", subtitle: "Excel quoting tool · Profilm edition", icon: "tablecells.fill", color: SearchKind.tool.color) { QuoteCalculatorView() }
-                    LibraryRow(title: "Fun & Games", subtitle: "9 drills, demos, quizzes and games", icon: "gamecontroller.fill", color: Theme.purple) { FunAndGamesView() }
+                    LibraryRow(title: "Fun & Games", subtitle: "9 drills, demos, quizzes and games", icon: "gamecontroller.fill", color: Theme.iconSlate) { FunAndGamesView() }
                 }
                 Section("Free previews") {
                     LibraryRow(title: "2.9 Lifting Edges — Decision Tree", subtitle: "Six questions, four root causes", icon: "arrow.triangle.branch", color: SearchKind.guide.color) { LiftingEdgesView() }
                     LibraryRow(title: "Quote Calculator User Guide", subtitle: "Building a quote with the Profilm template", icon: "doc.text.fill", color: SearchKind.tool.color) { QuoteGuideView() }
                 }
                 Section("Kit") {
-                    LibraryRow(title: "PPF Shopping List", subtitle: "Tools and chemicals Simon uses", icon: "cart.fill", color: Theme.accentDeep) { ShoppingListView() }
+                    LibraryRow(title: "PPF Shopping List", subtitle: "Tools and chemicals Simon uses", icon: "cart.fill", color: Theme.iconSlate) { ShoppingListView() }
                 }
             }
             .navigationTitle("Library")
