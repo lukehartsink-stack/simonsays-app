@@ -39,8 +39,7 @@ struct SearchHomeView: View {
                     resultsList
                 }
             }
-            .navigationTitle("simonsays.coach")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Home")
             .searchable(text: $query, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search FAQ, products, tools, handbook…")
             .searchScopes($scope, activation: .onSearchPresentation) {
                 ForEach(SearchScope.allCases) { s in Text(s.label).tag(s) }
@@ -217,7 +216,7 @@ struct BrandHero: View {
             HStack(spacing: 10) {
                 Image(systemName: "car.side.fill")
                     .font(.title3.weight(.semibold))
-                    .foregroundStyle(Theme.accentDeep)
+                    .foregroundStyle(Color(hex: 0x1F4E79))
                     .frame(width: 36, height: 36)
                     .background(.white, in: RoundedRectangle(cornerRadius: 10))
                 VStack(alignment: .leading, spacing: 1) {
@@ -235,7 +234,7 @@ struct BrandHero: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
         .background(
-            LinearGradient(colors: [Theme.accentDeep, Theme.accent],
+            LinearGradient(colors: [Color(hex: 0x1F4E79), Color(hex: 0x2E75B6)],
                            startPoint: .topLeading, endPoint: .bottomTrailing),
             in: RoundedRectangle(cornerRadius: 16)
         )
@@ -258,8 +257,8 @@ struct ActionTile<Destination: View>: View {
                     .foregroundStyle(.white)
                     .frame(width: 40, height: 40)
                     .background(color, in: RoundedRectangle(cornerRadius: 10))
-                Spacer(minLength: 0)
                 Text(title).font(.subheadline.weight(.semibold)).foregroundStyle(.primary)
+                    .padding(.top, 2)
                 Text(subtitle).font(.caption).foregroundStyle(.secondary).lineLimit(2)
             }
             .frame(maxWidth: .infinity, minHeight: 128, alignment: .topLeading)
