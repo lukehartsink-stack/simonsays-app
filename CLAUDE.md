@@ -11,8 +11,11 @@ Native SwiftUI companion app for https://simonsays.coach (PPF training). Bundle 
 | Content | Source | How to update |
 |---|---|---|
 | FAQ, study set, product finder | Website JSON, copied into `SimonSays/Resources/*.json` | `node tools/sync-content.js` |
-| Fun & Games, knowledge quiz | Loaded live from the site in a web view (`Theme.toolsBase`) | Nothing, changes on the site show immediately |
+| Drill deck, checklist bank, diagnoser bank, panel order, quiz bank | Website text files, copied into `SimonSays/Resources/*.txt` (parsed by `Models/GameData.swift`) | `node tools/sync-content.js` |
+| Stretch Lab, Heat & Tack Lab, Self-heal Demo, Spot the Defect | Native SwiftUI ports under `SimonSays/Views/Games/` | Edit the Swift |
 | Handbook parts, Lifting Edges tree, calculators, About, Quote guide | Typed into Swift views under `SimonSays/Views/` | Edit the Swift |
+
+There are no web views in the app. Everything works offline. Do not add a WKWebView; Apple's guideline 4.2 rejects apps that are a wrapped website. New site content comes in as data (JSON or pipe-separated text) or as a native screen.
 
 ## Common requests
 
@@ -21,7 +24,8 @@ Native SwiftUI companion app for https://simonsays.coach (PPF training). Bundle 
 - **"Fix this build error"**: the user pastes Codemagic log text. Fix the Swift, push, ask them to rebuild.
 - **New handbook section**: edit the `parts` list in `SimonSays/Views/Handbook/HandbookView.swift`.
 - **Change contact details or About page**: `SimonSays/Theme.swift` (email, Instagram, site URL) and `SimonSays/Views/More/MoreView.swift`.
-- **Web tools show the site header again**: adjust the CSS selectors in `SimonSays/Views/Shared/WebView.swift`. When Simon publishes header-less pages under `/app/`, change `Theme.toolsBase` in `Theme.swift`.
+- **New drill, checklist item, quiz or diagnoser question**: add it on the website first (the `.js` banks), then run the sync. The app reads the same pipe-separated format: see the comments at the top of each bank on the site.
+- **A game looks wrong**: the nine tools live in `SimonSays/Views/Games/`, one file each.
 
 ## Design rules
 

@@ -6,12 +6,14 @@ This is written so anyone can follow it. No coding needed. Claude Code does the 
 
 The website is the boss. The app copies the website.
 
-- FAQ, study set and product finder live in three small files inside the app.
-  A script pulls the newest versions from the website.
-- Fun & Games and the quiz are loaded live from the website inside the app.
-  Change them on the site and the app shows the change straight away. No app update needed.
-- Handbook text, the Lifting Edges tree, the calculators and the About page are typed into the app.
+- FAQ, study set, product finder, the drill deck, the checklist, the quiz questions, the
+  defect diagnoser questions and the panel order all live in small files inside the app.
+  A script pulls the newest versions from the website. Edit them on the website as you do now,
+  then run the sync and ship.
+- Handbook text, the Lifting Edges tree, the calculators, the four labs (Stretch, Heat & Tack,
+  Self-heal, Spot the Defect) and the About page are built into the app.
   Ask Claude Code to change them.
+- Nothing in the app loads a web page. That keeps Apple happy and makes everything work offline.
 
 ## What you need (one time)
 

@@ -1,0 +1,28 @@
+Environment | yes | Bay temperature in working range (20–25°C, measured)
+Environment | yes | Bay free of through-draft and airflow turbulence near the panel
+Environment | no  | Bay floor swept, at best washed; no dust raised by foot traffic
+Environment | no  | Inspection lighting positioned to catch contamination from multiple angles
+Environment | yes | Peelboard cleaned with PPF Template / Bulk ready for installation
+Environment | no  | Coffee and biscuits at the ready
+Vehicle | yes | Vehicle washed with 2PH system, rinsed clean
+Vehicle | yes | Vehicle decontaminated (clay bar, at least one-step polish, steam-cleaned and degreased)
+Vehicle | yes | Vehicle dried completely with clean microfibre, no water in seams
+Vehicle | no  | Pre-install photos taken of panels to be covered and any existing damage
+Vehicle | no  | Removable parts taken off where the job requires (badges, mirrors, trims)
+Surface | yes | Panel temperature in working range — measure the panel itself, not just the bay
+Surface | yes | Panel cleaned with Veritas before liner is removed
+Surface | yes | Final dust-free check under inspection light, on each panel
+Surface | no  | Any paint imperfections addressed or noted in the job file before the film goes on
+Tools | yes | New, sharp blade in the cutter
+Tools | yes | Squeegees clean; no nicks or grit on the working edge
+Tools | yes | Slip solution mixed fresh at the correct ratio
+Tools | yes | Heat source on hand and tested (heat gun, IR, Hot demineralised water)
+Tools | yes | Tack solution mixed and ready (if used separately from slip)
+Tools | no  | Microfibre cloths within reach of the install spot
+Tools | no  | Masking tape ready, not contaminated from a previous job
+Installer | yes | Job sheet on hand with film grade, vehicle, and panel list confirmed
+Installer | yes | Hands washed; nitrile gloves on
+Installer | yes | Clean, lint free clothes, no shedding fibres or pet hair
+Installer | no  | Long hair tied back
+Installer | no  | Phone silenced or out of reach for the install
+Installer | no  | Customer aftercare guide and warranty form prepared

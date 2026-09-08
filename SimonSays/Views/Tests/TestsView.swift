@@ -37,10 +37,10 @@ struct TestsView: View {
                     NavCard(badge: "\(studySet.questions.count) questions", title: "Handbook Study Set",
                             text: "Multiple-choice questions on Parts 1–3. Marks your answers and points you to the handouts to revisit.",
                             systemImage: "checkmark.circle.fill") { StudySetView() }
-                    NavCard(badge: "Online quiz", title: "PPF Knowledge Quiz",
+                    NavCard(badge: "20 questions", title: "PPF Knowledge Quiz",
                             text: "Twenty randomised questions across Materials, Application, Defects and Business.",
                             systemImage: "graduationcap.fill") {
-                        WebPage(title: "PPF Knowledge Quiz", url: URL(string: Theme.toolsBase + "ppf-knowledge-quiz/")!)
+                        KnowledgeQuizView()
                     }
                     NavCard(badge: "9 tools", title: "Fun & Games",
                             text: "Drills, demos, quizzes, and games — from the self-heal demo to the panel-sequence puzzle.",

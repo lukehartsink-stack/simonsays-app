@@ -1,0 +1,13 @@
+Bonnet
+Passenger side front wing
+Driver side front wing
+Front bumper
+Passenger side mirror
+Driver side mirror
+Headlights
+Roof
+Side panels
+Front doors
+Rear doors
+Boot / Tailgate
+Rear bumper
