@@ -16,8 +16,7 @@ this computer before Codemagic sees it.
 - Check which Apple ID TestFlight on your phone is signed in with. It must match the tester
   email (`nucleondh@gmail.com` or `training@simonsays.coach`).
 - Check the build in App Store Connect under TestFlight. If it says "Missing Compliance",
-  that should not happen (the app declares it uses no special encryption), but tell Luke if
-  it does.
+  say to Claude Code "the build says Missing Compliance" and it will fix the setting.
 
 ## The app shows old content
 
@@ -40,9 +39,8 @@ You opened the terminal somewhere else. In VS Code, use **File, Open Folder** an
 
 ## Claude Code says "conflict" when shipping
 
-Luke changed the same file at the same time. Say "explain the conflict in plain words". If
-the answer is clear, tell Claude which version to keep. If not, message Luke. Never say
-"force push".
+Someone else changed the same file at the same time. Say "explain the conflict in plain
+words" and tell Claude which version to keep. Never say "force push".
 
 ## Something looks wrong on a screen
 

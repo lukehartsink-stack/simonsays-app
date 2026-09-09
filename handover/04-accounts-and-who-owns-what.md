@@ -5,9 +5,9 @@ need from it.
 
 | Service | What it is for | Held by today | What Simon needs |
 |---|---|---|---|
-| **GitHub** (github.com/lukehartsink-stack/simonsays-app) | Stores the app's files and their history | Luke | Free GitHub account, added as a collaborator |
-| **Codemagic** (codemagic.io, app "simonsays-app") | Builds the app in the cloud and uploads it to Apple | Simon's own account (set up in chapter 2, step 11) | The Apple key from Luke, added under the name "AutoBook ASC Admin" |
-| **Apple Developer / App Store Connect** | Apple's side: certificates, the app record, TestFlight, App Store | Luke's Apple developer account | A TestFlight tester invite (already sent) |
+| **GitHub** (your fork of simonsays-app) | Stores the app's files and their history | Simon | Nothing more after chapter 2 |
+| **Codemagic** (codemagic.io, app "simonsays-app") | Builds the app in the cloud and uploads it to Apple | Simon's own account | Nothing more after chapter 2 |
+| **Apple Developer / App Store Connect** | Apple's side: certificates, the app record, TestFlight, App Store | Luke's Apple developer account | The Apple key, already given. Tester invites, already sent |
 | **TestFlight** (app on the phone) | Installs test versions | Apple | Signed in with the same Apple ID the invite went to |
 | **Website and hosting** (simonsays.coach, FTP) | The source of truth for content | Simon | Nothing new |
 
@@ -38,6 +38,8 @@ need from it.
 - The branch that gets built is called `main`. Everything ships from there.
 - Nothing secret is in the repository. Keys, passwords and certificates live only in
   Codemagic and Apple.
+- Luke's original copy at github.com/lukehartsink-stack/simonsays-app is the starting point
+  only. Your fork is where the app lives now.
 
 ## Moving the app to Simon's own accounts (optional, later)
 
@@ -49,7 +51,6 @@ Nothing has to move for the workflow to work. If you want the app fully under yo
 2. **Codemagic:** already yours. Once the app is under your Apple account, make a new
    App Store Connect API key there and replace the "AutoBook ASC Admin" key in Codemagic
    with it, same name.
-3. **GitHub:** either Luke transfers the repository to your account, or it stays where it is
-   with you as collaborator. Both work.
+3. **GitHub:** already yours.
 
 Do these in that order, one at a time, with a working build in between.

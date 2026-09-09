@@ -64,19 +64,16 @@ shipping every small edit on its own.
 - **Build:** Codemagic turning the folder into an actual app file and uploading it to Apple.
 - **TestFlight:** Apple's app for testing versions before they go on the App Store.
 
-## Keeping in step with Luke
+## Your copy is the real one
 
-Both you and Luke can make changes. Git merges them. To avoid stepping on each other:
-
-- Before you start a session, say to Claude Code: "Pull the latest changes." It fetches
-  anything Luke pushed since last time.
-- Ship your own changes when you finish, not days later.
-- If Claude says there is a "conflict", do not guess. Say "explain the conflict" and, if it
-  is not obvious, send Luke a message.
+Your GitHub copy (the fork from chapter 2) is the app from now on. Only you change it, so
+nothing ever clashes. If someone else is ever going to help with the code, add them as a
+collaborator on your GitHub copy and say "Pull the latest changes" to Claude before you
+start each session.
 
 ## Going to the App Store (later)
 
 TestFlight is for testing. Putting the app on the public App Store is a separate step done
 once per version in App Store Connect: pick the build, fill in the "what's new" text, press
-Submit for review. Apple reviews it in one to three days. Luke does this the first time and
-will show you.
+Submit for review. Apple reviews it in one to three days. Ask Claude Code "how do I submit
+the app to the App Store" when you are ready and it will walk you through the screens.
