@@ -20,12 +20,14 @@ There are no web views in the app. Everything works offline. Do not add a WKWebV
 ## Common requests
 
 - **"Sync the app content"**: run `node tools/sync-content.js`, report which files changed.
-- **"Ship it"**: `git add -A`, commit with a short message, `git push origin main`. Then tell the user to open codemagic.io, app "simonsays-app", Start new build, branch main, workflow "iOS → TestFlight". Pushing does not start a build by itself.
+- **"Pull the latest changes"**: `git pull origin main`, then say in one line what changed.
+- **"Ship it"**: `git add -A`, commit with a short message, `git push origin main`. Then tell the user to open codemagic.io, app "simonsays-app", and check whether a build started by itself; if not, Start new build, branch main, workflow "iOS → TestFlight". Documentation-only changes do not need a build.
 - **"Fix this build error"**: the user pastes Codemagic log text. Fix the Swift, push, ask them to rebuild.
 - **New handbook section**: edit the `parts` list in `SimonSays/Views/Handbook/HandbookView.swift`.
 - **Change contact details or About page**: `SimonSays/Theme.swift` (email, Instagram, site URL) and `SimonSays/Views/More/MoreView.swift`.
 - **New drill, checklist item, quiz or diagnoser question**: add it on the website first (the `.js` banks), then run the sync. The app reads the same pipe-separated format: see the comments at the top of each bank on the site.
 - **A game looks wrong**: the nine tools live in `SimonSays/Views/Games/`, one file each.
+- **"Update the handover pack"**: edit the chapters in `handover/`, then run `node tools/build-handover.js` to rebuild `handover/SIMON-SAYS-APP-HANDOVER.md`. Keep it plain-language; Simon is not a programmer.
 
 ## Design rules
 

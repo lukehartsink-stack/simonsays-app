@@ -1,0 +1,82 @@
+# 3. The everyday workflow
+
+Three steps, every time. Open VS Code, open the terminal, type `claude`. Then:
+
+## Step 1. Pull in the newest website content
+
+Say to Claude Code:
+
+> Sync the app content from the website.
+
+Claude runs the sync script. It fetches the FAQ, study set, products and the five game banks
+and tells you which files changed. If everything says "no change", the app already matches
+the website.
+
+You can also run it yourself without Claude:
+
+```
+node tools/sync-content.js
+```
+
+## Step 2. Change anything else
+
+Say what you want in plain words. Examples:
+
+> Add a new handbook section 2.8 called "Edge sealing". Here is the text: ...
+
+> Change the contact email on the About page to hello@simonsays.coach.
+
+> The Stretch Lab on the website now has a fourth film type. Mirror it in the app.
+
+> Rename the home screen tile "Product finder" to "Find a product".
+
+Claude edits the Swift files. You do not need to open them. Before it finishes it will show
+you what it changed. Read the summary and say if it is not what you meant.
+
+If a change touches Swift, Claude cannot test it on this computer. There is no Mac here, so
+nothing compiles locally. Codemagic does the compiling in step 3. That is why Claude keeps
+Swift edits small and careful. If Codemagic reports an error, chapter 6 covers it.
+
+## Step 3. Ship it
+
+Say to Claude Code:
+
+> Ship it.
+
+Claude saves the change with a short description (a "commit") and sends it to GitHub (a
+"push"). Then a build has to be started:
+
+1. Go to https://codemagic.io and open the app **simonsays-app**.
+2. If a build is already running with your change, you are done. Otherwise press
+   **Start new build**, pick branch **main** and workflow **iOS → TestFlight**, then press
+   **Start new build**.
+3. Wait about five to ten minutes. The build goes green when it is finished.
+4. Open **TestFlight** on your phone. The new version appears with an **Update** button.
+   Sometimes it takes a few extra minutes for Apple to process it.
+
+Each build uses paid Codemagic minutes. Group several changes into one build rather than
+shipping every small edit on its own.
+
+## What "commit", "push" and "build" mean
+
+- **Commit:** a saved snapshot of the folder with a note saying what changed.
+- **Push:** uploading that snapshot to GitHub so everyone has it.
+- **Build:** Codemagic turning the folder into an actual app file and uploading it to Apple.
+- **TestFlight:** Apple's app for testing versions before they go on the App Store.
+
+## Keeping in step with Luke
+
+Both you and Luke can make changes. Git merges them. To avoid stepping on each other:
+
+- Before you start a session, say to Claude Code: "Pull the latest changes." It fetches
+  anything Luke pushed since last time.
+- Ship your own changes when you finish, not days later.
+- If Claude says there is a "conflict", do not guess. Say "explain the conflict" and, if it
+  is not obvious, send Luke a message.
+
+## Going to the App Store (later)
+
+TestFlight is for testing. Putting the app on the public App Store is a separate step done
+once per version in App Store Connect: pick the build, fill in the "what's new" text, press
+Submit for review. Apple reviews it in one to three days. Luke does this the first time and
+will show you.
