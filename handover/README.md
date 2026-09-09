@@ -19,7 +19,7 @@ main folder automatically. You do not have to paste anything.
 | File | What it covers |
 |---|---|
 | `01-what-the-app-is.md` | What the app contains and where each piece of content comes from |
-| `02-set-up-your-computer.md` | One-time setup: Git, Node, VS Code, Claude Code, GitHub, Codemagic |
+| `02-set-up-your-computer.md` | One-time setup on Windows, step by step: Git, GitHub, Node, VS Code, Claude Code, Codemagic, TestFlight |
 | `03-everyday-workflow.md` | The three-step routine: sync, change, ship |
 | `04-accounts-and-who-owns-what.md` | GitHub, Codemagic, Apple, TestFlight: who holds what and how to move it |
 | `05-rules.md` | The rules that keep Apple happy and the app on brand |

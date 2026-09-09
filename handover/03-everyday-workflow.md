@@ -44,14 +44,14 @@ Say to Claude Code:
 > Ship it.
 
 Claude saves the change with a short description (a "commit") and sends it to GitHub (a
-"push"). Then a build has to be started:
+"push"). Codemagic notices the push and starts a build by itself.
 
-1. Go to https://codemagic.io and open the app **simonsays-app**.
-2. If a build is already running with your change, you are done. Otherwise press
+1. Go to https://codemagic.io and open the app **simonsays-app**. You should see a build
+   running with your change. If nothing appears after two minutes, press
    **Start new build**, pick branch **main** and workflow **iOS → TestFlight**, then press
    **Start new build**.
-3. Wait about five to ten minutes. The build goes green when it is finished.
-4. Open **TestFlight** on your phone. The new version appears with an **Update** button.
+2. Wait about five to ten minutes. The build goes green when it is finished.
+3. Open **TestFlight** on your phone. The new version appears with an **Update** button.
    Sometimes it takes a few extra minutes for Apple to process it.
 
 Each build uses paid Codemagic minutes. Group several changes into one build rather than

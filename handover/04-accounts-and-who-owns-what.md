@@ -6,7 +6,7 @@ need from it.
 | Service | What it is for | Held by today | What Simon needs |
 |---|---|---|---|
 | **GitHub** (github.com/lukehartsink-stack/simonsays-app) | Stores the app's files and their history | Luke | Free GitHub account, added as a collaborator |
-| **Codemagic** (codemagic.io, app "simonsays-app") | Builds the app in the cloud and uploads it to Apple | Luke's account | Codemagic login, added to the team |
+| **Codemagic** (codemagic.io, app "simonsays-app") | Builds the app in the cloud and uploads it to Apple | Simon's own account (set up in chapter 2, step 11) | The Apple key from Luke, added under the name "AutoBook ASC Admin" |
 | **Apple Developer / App Store Connect** | Apple's side: certificates, the app record, TestFlight, App Store | Luke's Apple developer account | A TestFlight tester invite (already sent) |
 | **TestFlight** (app on the phone) | Installs test versions | Apple | Signed in with the same Apple ID the invite went to |
 | **Website and hosting** (simonsays.coach, FTP) | The source of truth for content | Simon | Nothing new |
@@ -29,7 +29,9 @@ need from it.
   Apple. You never need the one-off again.
 - Codemagic signs the app using an App Store Connect API key stored inside Codemagic under
   the name "AutoBook ASC Admin". That key is not in the folder and must never be put there.
-- Builds are billed per minute. A normal build takes five to ten minutes.
+  Luke gives it to you privately once; it belongs to Luke's Apple account.
+- Builds start by themselves when a change is pushed to GitHub. Builds are billed per
+  minute on your Codemagic account. A normal build takes five to ten minutes.
 
 ### GitHub
 
@@ -44,9 +46,9 @@ Nothing has to move for the workflow to work. If you want the app fully under yo
 1. **Apple:** open your own Apple Developer account ($99 a year). Luke transfers the app to
    it inside App Store Connect. The bundle ID and all TestFlight history come with it.
    You then invite Luke to your team so he can keep helping.
-2. **Codemagic:** create your own Codemagic team, connect it to the GitHub repository, add
-   your own App Store Connect API key under Teams, Integrations, Developer Portal, and name
-   it "AutoBook ASC Admin" (or ask Claude Code to change the name in `codemagic.yaml`).
+2. **Codemagic:** already yours. Once the app is under your Apple account, make a new
+   App Store Connect API key there and replace the "AutoBook ASC Admin" key in Codemagic
+   with it, same name.
 3. **GitHub:** either Luke transfers the repository to your account, or it stays where it is
    with you as collaborator. Both work.
 

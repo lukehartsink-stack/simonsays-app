@@ -96,112 +96,245 @@ progress. When they are ready, the app can be translated. That is a separate job
 
 ---
 
-# 2. Set up your computer (one time)
+# 2. Set up your computer (one time, Windows)
 
-You need six things. Each takes a few minutes. Do them in order.
-This works on Windows or Mac. Where the steps differ it says so.
+Do these in order. Tick each one off. Every step tells you what you should see on the
+screen, so you know it worked. It takes about an hour, mostly waiting for downloads.
 
-## 1. Git
+You need: your Windows laptop, your phone, and your Claude login.
 
-Git keeps the app's files in sync between your computer, Luke's computer and GitHub.
+---
 
-- **Windows:** download from https://git-scm.com/download/win and run the installer.
-  Accept every default. When asked about a credential manager, keep it ticked.
-- **Mac:** open Terminal and type `git --version`. If it offers to install command line
-  tools, say yes.
+## Step 1. Install Git
 
-## 2. GitHub Desktop (the easy way to get the folder)
+Git is the thing that keeps the app files the same on your computer and on the internet.
 
-GitHub is where the app's files are stored online. GitHub Desktop is a friendly app that
-handles the login for you, so you never deal with keys or passwords in the terminal.
+1. Open your web browser.
+2. Go to: **https://git-scm.com/download/win**
+3. Click the link that says **Click here to download**. A file downloads.
+4. Open the downloaded file.
+5. A window with lots of pages opens. On every page just click **Next**. Do not change
+   anything. At the end click **Install**, then **Finish**.
 
-1. Create a free account at https://github.com if you do not have one. Tell Luke your
-   username so he can add you to the app's repository.
-2. Download GitHub Desktop from https://desktop.github.com and sign in.
-3. Accept the invitation email from GitHub.
-4. In GitHub Desktop: **File, Clone repository**, pick `lukehartsink-stack/simonsays-app`,
-   choose where to keep it (for example `Documents/simonsays-app`), press **Clone**.
+**You should see:** the installer window closes. Nothing else opens. That is fine.
 
-That folder is now the app. Everything below happens inside it.
+---
 
-## 3. Node.js
+## Step 2. Make a GitHub account and tell Luke your username
 
-Node runs the sync script that copies website content into the app.
+GitHub is the website where the app files are stored.
 
-- Go to https://nodejs.org and press the big **LTS** button. Run the installer, accept the
-  defaults.
-- To check: open a terminal and type `node --version`. You should see a version number.
+1. Go to: **https://github.com**
+2. Click **Sign up**. Use your email, pick a password, pick a username.
+   Write the username down.
+3. Confirm your email when GitHub asks.
+4. **Send Luke a message with your GitHub username.** Luke needs it to give you access.
+   Wait for Luke to say "done" before Step 4.
 
-## 4. Visual Studio Code
+**You should see:** GitHub shows you a page with your username in the top right corner.
 
-VS Code is the editor. You will mostly use it as a window with a terminal in it.
+---
 
-1. Download from https://code.visualstudio.com and install.
-2. Open VS Code. **File, Open Folder** and pick the `simonsays-app` folder.
-3. Optional: install the **Claude Code** extension from the Extensions panel (the four
-   squares icon on the left, search "Claude Code", by Anthropic). It adds a Claude button to
-   VS Code. The terminal version below works without it.
+## Step 3. Install GitHub Desktop
 
-## 5. Claude Code (the terminal version)
+GitHub Desktop is a small program that copies the app folder to your computer and remembers
+your GitHub login so you never type it again.
 
-This is the same Claude you already pay for, but it can read and edit files in the folder.
+1. Go to: **https://desktop.github.com**
+2. Click **Download for Windows**. Open the downloaded file. It installs itself.
+3. GitHub Desktop opens. Click **Sign in to GitHub.com**.
+4. Your browser opens. Sign in with the account from Step 2. Click **Authorize** if it asks.
+5. Back in GitHub Desktop, click **Finish**.
 
-**Windows:** open PowerShell and run:
+**You should see:** GitHub Desktop with a mostly empty window and your name in it.
 
-```
-irm https://claude.ai/install.ps1 | iex
-```
+---
 
-**Mac:** open Terminal and run:
+## Step 4. Copy the app folder to your computer
 
-```
-curl -fsSL https://claude.ai/install.sh | bash
-```
+Wait for Luke to confirm he has added you (Step 2) before doing this.
 
-Then close and reopen the terminal.
+1. Check your email. There is an invitation from GitHub to "simonsays-app". Click
+   **View invitation**, then **Accept invitation**.
+2. Open GitHub Desktop.
+3. Click **File** (top left), then **Clone repository**.
+4. Click the tab **GitHub.com**. In the list, click **lukehartsink-stack/simonsays-app**.
+5. Under **Local path** it says where the folder will go. Leave it as it is. Write the path
+   down. It is usually something like `C:\Users\Simon\Documents\GitHub\simonsays-app`.
+6. Click **Clone**.
 
-Start it inside the app folder:
+**You should see:** a progress bar, then GitHub Desktop says "simonsays-app" at the top.
+A folder called `simonsays-app` now exists in the place from point 5.
 
-1. In VS Code, open the terminal from the menu: **View, Terminal**. The terminal opens
-   inside the app folder automatically.
-2. Type `claude` and press Enter.
-3. The first time it asks you to log in. Type `/login`, pick "Claude account with
-   subscription", and it opens your browser to sign in.
+---
 
-You are now talking to Claude inside the app folder. It has already read the file
-`CLAUDE.md`, which tells it everything about the app, so you can just say what you want.
+## Step 5. Install Node
 
-To stop: type `/exit` or close the terminal.
+Node runs the little script that copies website content into the app.
 
-## 6. Codemagic (the build robot)
+1. Go to: **https://nodejs.org**
+2. Click the big green button that says **LTS** (it also shows a version number).
+3. Open the downloaded file. Click **Next** on every page, tick the licence box when it
+   asks, click **Install**, then **Finish**.
 
-Codemagic is a service with Macs in the cloud. It takes the folder, compiles the app, signs it
-with the Apple certificates and uploads it to TestFlight. It is needed because nobody in this
-project builds on a Mac with Xcode.
+**You should see:** the installer closes. Nothing else opens.
 
-- Go to https://codemagic.io and create an account. Sign in with GitHub, it is simplest.
-- Tell Luke, and he adds you to the team that has the "simonsays-app" application. Until
-  then, Luke can press the build button when you say a change is ready.
+---
 
-See chapter 4 for who owns which account and how that can change later.
+## Step 6. Install Visual Studio Code
 
-## Check that everything works
+VS Code is the window you will work in. Think of it as a notepad with a chat built in.
 
-In the VS Code terminal, inside the app folder, type:
+1. Go to: **https://code.visualstudio.com**
+2. Click **Download for Windows**. Open the downloaded file.
+3. Click **Next** on every page. On the page with tick boxes, tick **Add to PATH** and
+   **Create a desktop icon** if they are not ticked. Click **Install**, then **Finish**.
+4. VS Code opens. Close the welcome tab if it shows one.
 
-```
-node tools/sync-content.js
-```
+**You should see:** a dark window with a menu bar at the top saying File, Edit, Selection...
 
-You should see one line per file saying "no change" or "updated". That proves Node, the
-folder and the internet connection all work. If it says "updated" on anything, the website
-has newer content than the app. Chapter 3 says what to do with that.
+---
 
-Then type `claude` and say:
+## Step 7. Open the app folder in VS Code
 
-> Explain what this app is and how I update it.
+1. In VS Code, click **File** (top left), then **Open Folder...**
+2. Find the `simonsays-app` folder from Step 4. Click it once, then click **Select Folder**.
+3. If VS Code asks "Do you trust the authors of the files in this folder?", click
+   **Yes, I trust the authors**.
 
-If it answers in plain words with the three-step routine, you are set up.
+**You should see:** on the left side, a list of files and folders. Among them:
+`CLAUDE.md`, `handover`, `SimonSays`, `tools`. If you see those, you are in the right place.
+
+VS Code remembers this folder. Next time you open VS Code it opens here by itself.
+
+---
+
+## Step 8. Install Claude Code
+
+This is Claude, but living inside the folder so it can read and change the files.
+
+1. In VS Code, click **View** (top menu), then **Terminal**. A black box appears at the
+   bottom of the window. That is the terminal. You type commands in it.
+2. Click inside the black box. Copy this line exactly and paste it in, then press **Enter**:
+
+   ```
+   irm https://claude.ai/install.ps1 | iex
+   ```
+
+3. Text scrolls by for a minute. Wait until it stops and says something like
+   "Claude Code installed" or "Installation complete".
+4. Close VS Code completely (click the X top right). Open it again from the desktop icon.
+   It opens on the app folder again.
+
+**You should see:** after reopening, the folder list on the left is still there.
+
+---
+
+## Step 9. Start Claude and log in
+
+1. In VS Code, click **View**, then **Terminal** (the black box comes back).
+2. Type this and press **Enter**:
+
+   ```
+   claude
+   ```
+
+3. The first time it asks you to choose a theme. Press **Enter**.
+4. It asks how you want to log in. Choose **Claude account with subscription**. Your
+   browser opens. Log in with your normal Claude login. Click **Authorize**.
+5. Go back to VS Code. Claude is waiting for you with a `>` prompt.
+6. Type this and press **Enter**:
+
+   > Explain what this app is and how I update it.
+
+**You should see:** Claude answers in plain words and mentions three steps: sync, change,
+ship. That means Claude has read the instructions in the folder and knows the app.
+
+To stop Claude, type `/exit` and press **Enter**. To come back, type `claude` again.
+
+---
+
+## Step 10. Check that the sync works
+
+1. In the terminal (if Claude is running, type `/exit` first), type this and press
+   **Enter**:
+
+   ```
+   node tools/sync-content.js
+   ```
+
+**You should see:** eight lines, one per file, each ending with "no change" or "updated".
+Then a line saying "Everything already up to date" or "N file(s) updated".
+
+If it says "updated" for any file, do not worry. It means the website has newer content than
+the app. Chapter 3 tells you what to do with that.
+
+---
+
+## Step 11. Codemagic (the robot that builds the app)
+
+You already made a Codemagic account. Now connect it to the app folder on GitHub.
+
+1. Go to: **https://codemagic.io** and log in.
+2. Click **Add application** (a blue button).
+3. Choose **GitHub**. If it asks to connect your GitHub account, click **Connect** and
+   authorize it in the browser. This is the same GitHub account from Step 2.
+4. In the list of repositories, pick **simonsays-app**. If it is not in the list, click the
+   link to install the Codemagic GitHub app and tick **simonsays-app**, then come back.
+5. When it asks the project type, choose **iOS App** (or "Other", either works).
+6. Click **Finish**.
+
+**You should see:** an app called **simonsays-app** on your Codemagic dashboard. Codemagic
+finds the build recipe (`codemagic.yaml`) in the folder by itself.
+
+**Then the Apple key.** Codemagic needs a key from Apple to sign the app. Luke will send you
+this key privately (a small file ending in `.p8`, plus two codes called Issuer ID and Key ID).
+Do not put the key in the app folder, and do not email it around. When you have it:
+
+1. In Codemagic, click **Teams** (left menu), then your team name.
+2. Click **Integrations**, then next to **Developer Portal** click **Manage keys** (or
+   **Connect**).
+3. Click **Add key**. Fill in:
+   - **App Store Connect API key name:** `AutoBook ASC Admin` (exactly this, it must
+     match the recipe)
+   - **Issuer ID:** paste the code Luke sent
+   - **Key ID:** paste the code Luke sent
+   - **API key:** click Upload and pick the `.p8` file Luke sent
+4. Click **Save**.
+
+**You should see:** "AutoBook ASC Admin" in the list of keys.
+
+**Then a test build.** On the Codemagic dashboard click **simonsays-app**, then
+**Start new build**. Pick branch **main** and workflow **iOS → TestFlight**. Click **Start
+new build**. It takes five to ten minutes. If every step turns green, you are done. If
+something turns red, copy the red text and send it to Luke this first time.
+
+From now on, every time you "ship" a change (chapter 3), Codemagic starts a build by
+itself. You only open Codemagic to watch it or if something fails.
+
+---
+
+## Step 12. Tell Luke which Apple ID your phone uses
+
+TestFlight only shows the app to the Apple ID that was invited. Two emails were invited:
+`nucleondh@gmail.com` and `training@simonsays.coach`. Luke needs to know which one your
+phone is signed in with.
+
+1. On your iPhone open **Settings**.
+2. Tap your name at the very top.
+3. Under your name is an email address. That is your Apple ID.
+4. **Send that email address to Luke.** If it is neither of the two above, tell Luke and he
+   will invite the right one.
+
+**You should see:** after Luke confirms, the TestFlight app on your phone shows
+"simonsays.coach" with an Install or Update button.
+
+---
+
+## Done
+
+You now have everything. From here on, the only things you ever do are in chapter 3:
+open VS Code, type `claude`, and talk to it.
 
 ---
 
@@ -251,14 +384,14 @@ Say to Claude Code:
 > Ship it.
 
 Claude saves the change with a short description (a "commit") and sends it to GitHub (a
-"push"). Then a build has to be started:
+"push"). Codemagic notices the push and starts a build by itself.
 
-1. Go to https://codemagic.io and open the app **simonsays-app**.
-2. If a build is already running with your change, you are done. Otherwise press
+1. Go to https://codemagic.io and open the app **simonsays-app**. You should see a build
+   running with your change. If nothing appears after two minutes, press
    **Start new build**, pick branch **main** and workflow **iOS → TestFlight**, then press
    **Start new build**.
-3. Wait about five to ten minutes. The build goes green when it is finished.
-4. Open **TestFlight** on your phone. The new version appears with an **Update** button.
+2. Wait about five to ten minutes. The build goes green when it is finished.
+3. Open **TestFlight** on your phone. The new version appears with an **Update** button.
    Sometimes it takes a few extra minutes for Apple to process it.
 
 Each build uses paid Codemagic minutes. Group several changes into one build rather than
@@ -298,7 +431,7 @@ need from it.
 | Service | What it is for | Held by today | What Simon needs |
 |---|---|---|---|
 | **GitHub** (github.com/lukehartsink-stack/simonsays-app) | Stores the app's files and their history | Luke | Free GitHub account, added as a collaborator |
-| **Codemagic** (codemagic.io, app "simonsays-app") | Builds the app in the cloud and uploads it to Apple | Luke's account | Codemagic login, added to the team |
+| **Codemagic** (codemagic.io, app "simonsays-app") | Builds the app in the cloud and uploads it to Apple | Simon's own account (set up in chapter 2, step 11) | The Apple key from Luke, added under the name "AutoBook ASC Admin" |
 | **Apple Developer / App Store Connect** | Apple's side: certificates, the app record, TestFlight, App Store | Luke's Apple developer account | A TestFlight tester invite (already sent) |
 | **TestFlight** (app on the phone) | Installs test versions | Apple | Signed in with the same Apple ID the invite went to |
 | **Website and hosting** (simonsays.coach, FTP) | The source of truth for content | Simon | Nothing new |
@@ -321,7 +454,9 @@ need from it.
   Apple. You never need the one-off again.
 - Codemagic signs the app using an App Store Connect API key stored inside Codemagic under
   the name "AutoBook ASC Admin". That key is not in the folder and must never be put there.
-- Builds are billed per minute. A normal build takes five to ten minutes.
+  Luke gives it to you privately once; it belongs to Luke's Apple account.
+- Builds start by themselves when a change is pushed to GitHub. Builds are billed per
+  minute on your Codemagic account. A normal build takes five to ten minutes.
 
 ### GitHub
 
@@ -336,9 +471,9 @@ Nothing has to move for the workflow to work. If you want the app fully under yo
 1. **Apple:** open your own Apple Developer account ($99 a year). Luke transfers the app to
    it inside App Store Connect. The bundle ID and all TestFlight history come with it.
    You then invite Luke to your team so he can keep helping.
-2. **Codemagic:** create your own Codemagic team, connect it to the GitHub repository, add
-   your own App Store Connect API key under Teams, Integrations, Developer Portal, and name
-   it "AutoBook ASC Admin" (or ask Claude Code to change the name in `codemagic.yaml`).
+2. **Codemagic:** already yours. Once the app is under your Apple account, make a new
+   App Store Connect API key there and replace the "AutoBook ASC Admin" key in Codemagic
+   with it, same name.
 3. **GitHub:** either Luke transfers the repository to your account, or it stays where it is
    with you as collaborator. Both work.
 
