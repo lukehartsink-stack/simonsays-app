@@ -4,7 +4,7 @@ workflows:
     max_build_duration: 15
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: AutoBook ASC Admin
+      app_store_connect: Simon Says App
     environment:
       xcode: latest
     scripts:
@@ -45,7 +45,7 @@ workflows:
     integrations:
       # Name of the App Store Connect API key you add under
       # Codemagic → Teams → Integrations → Developer Portal
-      app_store_connect: AutoBook ASC Admin
+      app_store_connect: Simon Says App
     environment:
       xcode: latest
       ios_signing:

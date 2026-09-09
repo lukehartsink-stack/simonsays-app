@@ -16,7 +16,7 @@ Key ID. Issuer ID and Key ID are on App Store Connect, Users and Access, Integra
 App Store Connect API.
 
 Apple only lets you download a `.p8` once. If you no longer have it, make a new key there
-with role Admin, download it, and send that one instead. Simon names it "AutoBook ASC Admin"
+with role Admin, download it, and send that one instead. Simon names it "Simon Says App"
 in his Codemagic, so `codemagic.yaml` never changes.
 
 That is everything. Simon's fork, his Codemagic and his phone are handled in his chapter 2

@@ -151,13 +151,13 @@ You should see: **simonsays-app** on your Codemagic dashboard.
 2. Click **Integrations**. Next to **Developer Portal** click **Manage keys** (or
    **Connect**).
 3. Click **Add key** and fill in:
-   - Name: `AutoBook ASC Admin` (type it exactly like this)
+   - Name: `Simon Says App` (type it exactly like this)
    - Issuer ID: the first code
    - Key ID: the second code
    - API key: click **Upload** and pick the `.p8` file
 4. Click **Save**.
 
-You should see: "AutoBook ASC Admin" in the list.
+You should see: "Simon Says App" in the list.
 
 **Run one test build**
 

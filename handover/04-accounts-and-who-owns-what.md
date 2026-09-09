@@ -28,7 +28,7 @@ need from it.
   **iOS → TestFlight** (the everyday one) and a one-off that registered the bundle ID with
   Apple. You never need the one-off again.
 - Codemagic signs the app using an App Store Connect API key stored inside Codemagic under
-  the name "AutoBook ASC Admin". That key is not in the folder and must never be put there.
+  the name "Simon Says App". That key is not in the folder and must never be put there.
   Luke gives it to you privately once; it belongs to Luke's Apple account.
 - Builds start by themselves when a change is pushed to GitHub. Builds are billed per
   minute on your Codemagic account. A normal build takes five to ten minutes.
@@ -49,7 +49,7 @@ Nothing has to move for the workflow to work. If you want the app fully under yo
    it inside App Store Connect. The bundle ID and all TestFlight history come with it.
    You then invite Luke to your team so he can keep helping.
 2. **Codemagic:** already yours. Once the app is under your Apple account, make a new
-   App Store Connect API key there and replace the "AutoBook ASC Admin" key in Codemagic
+   App Store Connect API key there and replace the "Simon Says App" key in Codemagic
    with it, same name.
 3. **GitHub:** already yours.
 
